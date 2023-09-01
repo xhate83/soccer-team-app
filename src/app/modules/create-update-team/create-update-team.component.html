@@ -1,0 +1,73 @@
+<app-header [text]="title" [icon]="icon">
+</app-header>
+<form [formGroup]="teamForm" 
+    class="flex flex-col p-4 rounded bg-gray-200 space-y-2">
+
+    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 items-center">
+
+        <mat-form-field class="w-full">
+            <mat-label>Nombre de equipo</mat-label>
+            <input  formControlName="nombre" matInput>
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+            <mat-label>Estadio</mat-label>
+            <input  formControlName="estadio" matInput>
+        </mat-form-field>
+
+    </div>
+
+    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 items-center">
+
+        <mat-form-field class="w-full">
+            <mat-label>Sitio Web</mat-label>
+            <input  formControlName="sitioWeb" matInput>
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+            <mat-label>Nacionalidad</mat-label>
+            <input  formControlName="nacionalidad" matInput>
+        </mat-form-field>
+    
+    </div>
+
+    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 items-center">
+
+       
+        <mat-form-field class="w-full">
+            <mat-label>Fundación</mat-label>
+            <input [matDatepicker]="pickerFundation" formControlName="fundacion" matInput [max]="maxDate">
+            <mat-datepicker  #pickerFundation></mat-datepicker>
+            <mat-datepicker-toggle matIconSuffix [for]="pickerFundation">
+            </mat-datepicker-toggle>
+            <mat-hint>DD-MM-YYYY</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+            <mat-label>Entrenador</mat-label>
+            <input  formControlName="entrenador" matInput >
+        </mat-form-field>
+
+    </div>
+
+    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 items-center">
+      
+        <mat-form-field class="w-full">
+            <mat-label>Capacidad</mat-label>
+            <input  formControlName="capacidad" matInput >
+            <mat-hint>Solo números</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+            <mat-label>Valor en USD</mat-label>
+            <input  formControlName="valor" matInput>
+            <mat-hint>Solo números</mat-hint>
+        </mat-form-field>
+    </div>
+
+    
+    <div class="flex flex-row justify-end">
+        <button (click)="onSubmit()" mat-flat-button color="primary" type="button">{{ isEdit ? 'Actualizar' : 'Crear'}}</button>
+    </div>
+    
+</form>

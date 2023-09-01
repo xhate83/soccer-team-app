@@ -1,0 +1,93 @@
+<h2 mat-dialog-title>Consulta por ID</h2>
+<mat-dialog-content class="mat-typography">
+    <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-x-8 sm:space-y-0">
+        <mat-form-field >
+            <mat-label>Id de equipo</mat-label>
+            <input [formControl]="inputFind" matInput required placeholder="Escribe un ID">
+            <mat-hint>Solo números</mat-hint>
+        </mat-form-field>
+        <button mat-flat-button color="primary" (click)="findById()">Consultar</button>
+    </div>
+
+    <div *ngIf="team" class="text-center font-semibold text-2xl my-4 text-green-900">
+        Datos del equipo
+    </div>
+
+    <div *ngIf="team" class="space-y-2 tex-md flex flex-col w-full text-white">
+        <div class="rounded bg-gray-900 space-x-2 flex flex-row justify-between p-2">
+            <span>
+                ID:
+            </span>
+            <span>
+                {{team.id}}
+            </span>
+            
+        </div>
+        <div class="rounded bg-gray-900 space-x-2 flex flex-row justify-between p-2">
+            <span>
+                Nombre:
+            </span>
+            <span>
+                {{team.nombre}}
+            </span>
+            
+        </div>
+        <div class="mb-2 rounded bg-gray-900 space-x-2 flex flex-row justify-between p-2">
+            <span>
+                Estadio:
+            </span>
+            <span>
+                {{team.estadio}}
+            </span>
+        </div>
+        <div class="mb-2 rounded bg-gray-900 space-x-2 flex flex-row justify-between p-2">
+            <span>
+                Sitio Web:
+            </span>
+            <span>
+                {{team.sitioWeb || 'No registra'}}
+            </span>
+        </div>
+        <div class="mb-2 rounded bg-gray-900 space-x-2 flex flex-row justify-between p-2">
+            <span>
+                Fundación:
+            </span>
+            <span>
+                {{team.fundacion | date:'dd-MM-yyyy':'GMT'}}
+            </span>
+            
+        </div>
+        <div class="mb-2 rounded bg-gray-900 space-x-2 flex flex-row justify-between p-2">
+            <span>
+                Entrenador:
+            </span>
+            <span>
+                {{team.entrenador}}
+            </span>
+        </div>
+        <div class="mb-2 rounded bg-gray-900 space-x-2 flex flex-row justify-between p-2">
+            <span>
+                Capacidad:
+            </span>
+            <span>
+                {{team.capacidad}}
+            </span>
+        </div>
+        <div class="mb-2 rounded bg-gray-900 space-x-2 flex flex-row justify-between p-2">
+            <span>
+                Valor:
+            </span>
+            <span>
+                {{(team.valor | currency)|| 'No registra'}}
+            </span>
+        </div>
+    </div>
+
+    <div *ngIf="notFoundId && isFormtUsed" class="text-center font-semibold text-2xl my-4 text-red-900">
+        No se encontro el Id
+    </div>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button color="warn" mat-dialog-close>Cerrar</button>
+</mat-dialog-actions>
